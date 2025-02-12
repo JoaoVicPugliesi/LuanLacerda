@@ -2,14 +2,14 @@
     .QandAdiv {
         width: 350px;
     }
+}
+
+@media (max-width: 950px) {
 
     body {
         overflow: scroll;
         overflow-x: hidden;
     }
-}
-
-@media (max-width: 950px) {
 
     .products {
         overflow-x: scroll;
