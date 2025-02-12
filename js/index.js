@@ -1,66 +1,9 @@
-const square1btn = document.querySelector(".square1btn");
-const square2btn = document.querySelector(".square2btn");
-const square3btn = document.querySelector(".square3btn");
-const square1 = document.querySelector(".square1");
-const square1video = document.querySelector(".square1video");
-const square2 = document.querySelector(".square2");
-const square2video = document.querySelector(".square2video");
-const square3 = document.querySelector(".square3");
-const square3video = document.querySelector(".square3video");
-
-function addExpandListeners() {
-    if (window.innerWidth > 1300) {
-        square1btn.addEventListener('click', () => toggleExpand(square1, square1video));
-        square2btn.addEventListener('click', () => toggleExpand(square2, square2video));
-        square3btn.addEventListener('click', () => toggleExpand(square3, square3video));
-    } else {
-        removeExpandListeners();
-    }
-}
-
-function toggleExpand(square, video) {
-    document.querySelectorAll(".square1, .square2, .square3").forEach(sq => {
-        sq.classList.remove("full");
-    });
-
-    square.classList.add("full");
-    video.classList.add("nohover");
-
-    setTimeout(() => {
-        document.addEventListener("click", closeExpand);
-    }, 100); 
-}
-
-function closeExpand(event) {
-    if (!event.target.closest(".square1, .square2, .square3")) {
-        document.querySelectorAll(".square1, .square2, .square3").forEach(sq => {
-            sq.classList.remove("full");
-        });
-        document.removeEventListener("click", closeExpand);
-    }
-}
-
-function removeExpandListeners() {
-    square1btn.replaceWith(square1btn.cloneNode(true));
-    square2btn.replaceWith(square2btn.cloneNode(true));
-    square3btn.replaceWith(square3btn.cloneNode(true));
-}
-
-addExpandListeners();
-window.addEventListener("resize", addExpandListeners);
-
 document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll('a').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             const targetId = this.getAttribute('href');
             if (targetId.startsWith("#")) {  
                 e.preventDefault();
-                square1.classList.remove('full');
-                square2.classList.remove('full');
-                square3.classList.remove('full');
-                square1video.classList.remove('nohover');
-                square2video.classList.remove('nohover');
-                square3video.classList.remove('nohover');
                 const targetSection = document.querySelector(targetId);
                 if (targetSection) {
                     window.scrollTo({
