@@ -1,0 +1,173 @@
+@media (max-width: 1300px) {
+    .QandAdiv {
+        width: 350px;
+    }
+
+    .social {
+        padding-top: 130px;
+    }
+
+    .store {
+        padding-top: 50px;
+    }
+}
+
+@media (max-width: 950px) {
+    body {
+        overflow: scroll;
+        overflow-x: hidden;
+    }
+
+    .products {
+        overflow-x: scroll;
+        width: 100%;
+        justify-content: start;
+    }
+
+    .productstore {
+        padding: 10px;
+    }
+
+    .about {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .QandAdiv {
+        overflow: hidden;
+    }
+
+    .bio {
+        width: 400px;
+        height: max-content;
+    }
+    
+    .bioname {
+        font-family: "Oswald", serif;
+        font-size: 30px;
+    }
+    
+    .biodescription {
+        font-family: "Space Mono", serif;
+    }
+    
+    .biobtns {
+        width: max-content;
+        height: max-content;
+        flex-direction: row;
+        gap: 10px;
+    }
+
+    .luan {
+        width: 120px;
+    }
+
+    .social h3 {
+        font-size: 20px;
+        
+    }
+}
+
+@media (max-width: 600px) {
+    .header {
+        flex-direction: column;
+        width: 300px;
+    }
+
+    .squares {
+        margin-right: 150px;
+    }
+
+    .square1, .square2, .square3 {
+        width: 170px;
+        height: 100px;
+    }
+    
+    .sociainfo {
+        flex-direction: column;
+    }
+
+    .socialmedias {
+        width: max-content;
+        gap: 10px;
+    }
+
+    .socialmedias img {
+        width: 40px;
+    }
+}
+
+@media (max-width: 400px) {
+    .biodescription {
+        width: 300px;
+    }
+
+    .square1, .square2, .square3 {
+        width: 150px;
+        height: 100px;
+        background-color: #F4B400;
+        z-index: 1;
+        opacity: 0;
+        transform: translateY(50px);
+        transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+    }
+
+    .highlight {
+        width: 80%;
+        height: 200px;
+        border: #F4B400 2px solid;
+        
+    }
+
+    .highlightname {
+        font-size: 20px;  
+    }
+
+    .bio {
+        width: 90%; 
+    }
+
+    .QandAdiv {
+        width: 250px;
+    }
+
+    .biobtns {
+        width: max-content;
+    }
+}
+
+@media (max-width: 320px) {
+    .square1, .square2, .square3 {
+        width: 120px;
+    }
+
+    .productstore {
+        width: 200px;
+    }
+
+    .biobtn1, .biobtn2, .biobtn3 {
+        font-size: 15px;
+    }
+
+    .biodescription {
+        width: 200px;
+    }
+
+    .header {
+        width: 220px;
+    }
+
+    .copyright {
+        font-size: 15px;
+    }
+
+    .social h3 {
+        font-size: 15px;
+    }
+
+    .socialnumber h3, .sociallocation h3 {
+        font-size: 15px;
+    }
+}
