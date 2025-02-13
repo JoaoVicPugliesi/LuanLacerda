@@ -96,15 +96,11 @@
 
     .socialmedias {
         width: max-content;
-        gap: 10px;
+        gap: 20px;
     }
 
-    .socialmedias img {
-        width: 40px;
-    }
-
-    .social {
-        padding-top: 100px;
+    .socialmediasa i {
+        font-size: 30px;
     }
 }
 
@@ -156,7 +152,7 @@
     }
 
     .highlightname {
-        font-size: 15px;
+        font-size: 17px;
     }
 
     .productstore {

@@ -1,25 +1,20 @@
-document.addEventListener("DOMContentLoaded", function () {
-    document.querySelectorAll('a').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            const targetId = this.getAttribute('href');
-            if (targetId.startsWith("#")) {  
-                e.preventDefault();
-                const targetSection = document.querySelector(targetId);
-                if (targetSection) {
-                    window.scrollTo({
-                        top: targetSection.offsetTop, 
-                        behavior: 'smooth'
-                    });
+    document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll('a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId.startsWith("#")) {  
+                    e.preventDefault();
+                    const targetSection = document.querySelector(targetId);
+                    if (targetSection) {
+                        window.scrollTo({
+                            top: targetSection.offsetTop, 
+                            behavior: 'smooth'
+                        });
+                    }
                 }
-            }
+            });
         });
-    });
 
-    window.addEventListener("scroll", () => {
-        const header = document.querySelector("header");
-        header.classList.add('invisible');
-    });
-    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -67,11 +62,6 @@ document.addEventListener("DOMContentLoaded", function () {
         socialObserver.observe(socialSection);
     }
 
-    document.querySelectorAll('.socialmedias a').forEach(link => {
-        link.addEventListener('click', function(event) {
-            console.log('Clicked:', this.href);
-        });
-    });
 
     const bio = document.querySelector(".bio");
 
@@ -107,19 +97,46 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.querySelector(".biobtn3").addEventListener('click', () => {
-        bio.innerHTML = `
-            <div class="QandAdiv">
-                <p class="QandA">Quando e por que você começou a treinar para lutar? Virei profissional em 2012...</p>
-                <p class="QandA">Quais graduações e títulos você já conquistou? Melhor do Brasil...</p>
-                <p class="QandA">Você tem algum herói? Meu pai, minha mãe e meu mestre Dedé Pederneiras.</p>
-                <p class="QandA">O que significa para você lutar no UFC? O UFC é o maior evento de MMA...</p>
-                <p class="QandA">Você fez faculdade e, se sim, qual foi o seu diploma? Estudei administração...</p>
-                <p class="QandA">Qual era seu trabalho antes de começar a lutar? Nunca trabalhei...</p>
-                <p class="QandA">Técnica de grappling favorita: Arm lock</p>
-                <p class="QandA">Técnica de ataque favorita: Socos</p>
-            </div>
-            <div><a href="#store"><img class="arrow" src="images/down.png" alt=""></a></div>
-        `;
+        const questions = [
+            "Quando e por que você começou a treinar para lutar? Virei profissional em 2012. Sou um dos melhores do mundo e quero provar isso, mas para isso preciso estar 100% em forma.",
+            "Quais graduações e títulos você já conquistou? Melhor do Brasil, Campeão do Shooto Brasil, faixa-preta de BJJ.",
+            "Você tem algum herói? Meu pai, minha mãe e meu mestre Dedé Pederneiras.",
+            "O que significa para você lutar no UFC? O UFC é o maior evento de MMA do mundo; é onde estão os melhores lutadores do planeta, onde todo lutador sonha estar. É um sonho que se torna realidade. E aqui no UFC, ser campeão significa que você é o melhor do mundo. Você se torna um campeão mundial de MMA.",
+            "Você fez faculdade e, se sim, qual foi o seu diploma? Estudei administração por um ano e meio.",
+            "Qual era seu trabalho antes de começar a lutar? Nunca trabalhei. Sempre me dediquei à luta.",
+            "Técnica de grappling favorita: Arm lock",
+            "Técnica de ataque favorita: Socos"
+        ];
+
+        let currentIndex = 0;
+
+        function displayQuestion(index) {
+            bio.innerHTML = `
+                <div class="QandAdiv">
+                    <p class="QandA">${questions[index]}</p>
+                </div>
+                <div>
+                    <button id="prev" ${index === 0 ? "disabled" : ""}><i class="fa-solid fa-arrow-left"></i></button>
+                    <button id="next" ${index === questions.length - 1 ? "disabled" : ""}><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            `;
+
+            document.querySelector("#next").addEventListener("click", () => {
+                if (currentIndex < questions.length - 1) {
+                    currentIndex++;
+                    displayQuestion(currentIndex);
+                }
+            });
+
+            document.querySelector("#prev").addEventListener("click", () => {
+                if (currentIndex > 0) {
+                    currentIndex--;
+                    displayQuestion(currentIndex);
+                }
+            });
+        }
+
+        displayQuestion(currentIndex);
     });
 });
 
@@ -143,3 +160,5 @@ document.addEventListener("DOMContentLoaded", function () {
     products.addEventListener("scroll", hideHeaderOnScroll);
     
 });
+
+window.addEventListener("")
