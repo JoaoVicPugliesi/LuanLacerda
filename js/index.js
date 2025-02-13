@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 }
             }
         });
-    }, { threshold: 0.5 });
+    }, { threshold: 0.1 });
 
     const storeElements = document.querySelectorAll('.store, .productstore');
     storeElements.forEach(el => storeObserver.observe(el));

@@ -2,19 +2,35 @@
     .QandAdiv {
         width: 350px;
     }
-}
 
-@media (max-width: 950px) {
+    .store {
+        padding-top: 30px;
+    }
 
     body {
         overflow: scroll;
         overflow-x: hidden;
     }
+}
+
+@media (max-width: 950px) {
 
     .products {
         overflow-x: scroll;
         width: 100%;
         justify-content: start;
+    }
+
+    .products::-webkit-scrollbar {
+        height: 5px;
+    }
+      
+    .products::-webkit-scrollbar-track {
+        background: transparent;
+    }
+      
+    .products::-webkit-scrollbar-thumb {
+        background: #2C2C2C;
     }
 
     .productstore {
@@ -26,6 +42,7 @@
         justify-content: center;
         align-items: center;
         gap: 20px;
+        padding-top: 50px;
     }
 
     .QandAdiv {
@@ -90,6 +107,10 @@
     .socialmedias img {
         width: 40px;
     }
+
+    .social {
+        padding-top: 100px;
+    }
 }
 
 @media (max-width: 400px) {
@@ -108,7 +129,7 @@
     }
 
     .highlightdiv {
-        width: 210px;
+        width: 250px;
         height: 150px;
     }
 
