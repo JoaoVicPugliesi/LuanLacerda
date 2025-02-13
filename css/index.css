@@ -71,6 +71,12 @@ body {
     padding: 5px 10px;
     z-index: 2; 
     position: fixed; 
+    transition: opacity 0.3s ease-in-out;
+}
+
+.header.invisible {
+    opacity: 0;
+    pointer-events: none;
 }
 
 .logo {
@@ -214,9 +220,13 @@ body {
 .highlight {
     width: 100%;
     height: 100%;
-    border: #F4B400 2px solid;
     border-radius: 5px;
     object-fit: cover;
+    border: #F4B400 2px solid;
+}
+
+.highlight.fullscreen {
+    border: none;
 }
 
 .bio, .luan {

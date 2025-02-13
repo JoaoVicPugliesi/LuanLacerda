@@ -15,6 +15,11 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     });
 
+    window.addEventListener("scroll", () => {
+        const header = document.querySelector("header");
+        header.classList.add('invisible');
+    });
+    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -86,6 +91,19 @@ document.addEventListener("DOMContentLoaded", function () {
             </div>
             <div><a href="#store"><img class="arrow" src="images/down.png" alt=""></a></div>
         `;
+
+        setTimeout(() => {
+            const video = document.querySelector(".highlight");
+            if (video) {
+                document.addEventListener("fullscreenchange", () => {
+                    if (document.fullscreenElement === video) {
+                        video.classList.add("fullscreen");
+                    } else {
+                        video.classList.remove("fullscreen");
+                    }
+                });
+            }
+        }, 100); 
     });
 
     document.querySelector(".biobtn3").addEventListener('click', () => {
@@ -105,3 +123,23 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    const header = document.querySelector(".header");
+    const products  = document.querySelector(".products ");
+    
+    let isScrolling;
+
+    function hideHeaderOnScroll() {
+        header.classList.add("invisible");
+
+        clearTimeout(isScrolling);
+
+        isScrolling = setTimeout(() => {
+            header.classList.remove("invisible");
+        }, 500);
+    }
+
+    window.addEventListener("scroll", hideHeaderOnScroll);
+    products.addEventListener("scroll", hideHeaderOnScroll);
+    
+});
