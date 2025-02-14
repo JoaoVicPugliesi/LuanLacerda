@@ -1,26 +1,27 @@
-    document.addEventListener("DOMContentLoaded", function () {
-        document.querySelectorAll('a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                const targetId = this.getAttribute('href');
-                if (targetId.startsWith("#")) {  
-                    e.preventDefault();
-                    const targetSection = document.querySelector(targetId);
-                    if (targetSection) {
-                        window.scrollTo({
-                            top: targetSection.offsetTop, 
-                            behavior: 'smooth'
-                        });
-                    }
+document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll('a').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            const targetId = this.getAttribute('href');
+            if (targetId.startsWith("#")) {
+                e.preventDefault();
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    window.scrollTo({
+                        top: targetSection.offsetTop,
+                        behavior: 'smooth'
+                    });
+                    targetSection.classList.add("background");
                 }
-            });
+            }
         });
-
+    });
+    
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('appear');
             } else {
-                entry.target.classList.remove('appear'); 
+                entry.target.classList.remove('appear');
             }
         });
     }, { threshold: 0.2 });
@@ -32,9 +33,9 @@
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('appear');
-                
+
                 if (window.innerWidth < 600) {
-                    observer.unobserve(entry.target); 
+                    observer.unobserve(entry.target);
                 }
             }
         });
@@ -93,7 +94,7 @@
                     }
                 });
             }
-        }, 100); 
+        }, 100);
     });
 
     document.querySelector(".biobtn3").addEventListener('click', () => {
@@ -119,6 +120,7 @@
                     <button id="prev" ${index === 0 ? "disabled" : ""}><i class="fa-solid fa-arrow-left"></i></button>
                     <button id="next" ${index === questions.length - 1 ? "disabled" : ""}><i class="fa-solid fa-arrow-right"></i></button>
                 </div>
+                <div><a href="#store"><img class="arrow" src="images/down.png" alt=""></a></div>
             `;
 
             document.querySelector("#next").addEventListener("click", () => {
@@ -142,8 +144,8 @@
 
 document.addEventListener("DOMContentLoaded", function () {
     const header = document.querySelector(".header");
-    const products  = document.querySelector(".products ");
-    
+    const products = document.querySelector(".products ");
+
     let isScrolling;
 
     function hideHeaderOnScroll() {
@@ -158,7 +160,5 @@ document.addEventListener("DOMContentLoaded", function () {
 
     window.addEventListener("scroll", hideHeaderOnScroll);
     products.addEventListener("scroll", hideHeaderOnScroll);
-    
-});
 
-window.addEventListener("")
+});

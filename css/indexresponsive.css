@@ -33,6 +33,19 @@
         padding: 10px;
     }
 
+    .links a:hover::after {
+        width: 0%;
+    }
+
+    .biobtn1:hover, .biobtn2:hover, .biobtn3:hover {
+        box-shadow: inset -0px 0 0 0 #F4B400;
+        color: #F9F9F9;
+    }
+    
+    .QandAdiv {
+        height: 300px;
+    }
+
     .about {
         flex-direction: column;
         justify-content: center;
