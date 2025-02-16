@@ -3,6 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/indexresponsive.css">
     <script src="https://kit.fontawesome.com/2e9fec23b2.js" crossorigin="anonymous"></script>
@@ -17,6 +20,13 @@
             <a href="#about" draggable="false">Sobre</a>
             <a href="#store" draggable="false">Loja</a>
             <a href="#social" draggable="false">Social</a>
+        </div>
+        <div class="custom-select">
+            <button class="selected-language" onclick="toggleDropdown()">🇧🇷 PT</button>
+            <div class="language-options">
+                <button class="language1">🇧🇷 PT</button>
+                <button class="language2">🇺🇸 Eng</button>
+            </div>
         </div>
     </div>
     <div id="home" class="home">
@@ -33,10 +43,33 @@
             <button class="biobtn3"><h3>Q&A</h3></button>
         </div>
         <div class="bio">
-            <h3 class="bioname">Luan Lacerda</h3>
-            <p class="biodescription">"Nascido em Macapá. Tornou-se pro em 2012. Agora chegado no UFC ele busca provar que é um dos melhores do mundo do MMA peso galo max.61kg."</p>
-            <div>
-                <a href="#store" draggable="false"><img class="arrow" src="images/down.png" alt=""></a>
+            <div class="bio1">
+                <h3 class="bioname">Luan Lacerda</h3>
+                <p class="biodescription">"Nascido em Macapá. Tornou-se pro em 2012. Agora chegado no UFC ele busca provar que é um dos melhores do mundo do MMA peso galo max.61kg."</p>
+                <div>
+                    <a href="#store" draggable="false"><img class="arrow" src="images/down.png" alt=""></a>
+                </div>
+            </div>
+            <div class="bio2 invisible">
+                <h3 class="highlightname">Luan Lacerda - MMA Highlights</h3>
+                <div class="highlightdiv">
+                    <video class="highlight" src="videos/highlights.mp4" poster="images/logo.png" controls autoplay loop></video>
+                </div>
+                <div>
+                    <a href="#store" draggable="false"><img class="arrow" src="images/down.png" alt=""></a>
+                </div>
+            </div>
+            <div class="bio3 invisible">
+                <div class="QandAdiv">
+                    <p class="QandA"></p>
+                </div>
+                <div>
+                    <button id="prev"><i class="fa-solid fa-arrow-left"></i></button>
+                    <button id="next"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+                <div>
+                    <a href="#store" draggable="false"><img class="arrow" src="images/down.png" alt=""></a>
+                </div>
             </div>
         </div>
     </div>
@@ -90,7 +123,7 @@
             <div class="square2"><video class="video" src="videos/family.mp4" autoplay loop muted></video></div>
             <div class="square3"><video class="video" src="videos/celebrating.mp4" autoplay loop muted></video></div>
         </div>
-        <h3>Obrigado por chegar até aqui. Siga-me nas mídias sociais ou me mande um email.</h3>
+        <h3>Obrigado por chegar até aqui. Siga-me nas redes sociais ou me mande um email.</h3>
         <div class="socialwall"></div>
         <div class="socialmedias">
             <a class="socialmediasa" target="_blank" href="https://www.instagram.com/luanlacerda_ufc_61kg/"><i class="fa-brands fa-instagram"></i></a>

@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
-    
+
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -26,17 +26,13 @@ document.addEventListener("DOMContentLoaded", function () {
         });
     }, { threshold: 0.2 });
 
-    const elementsToObserve = document.querySelectorAll('.bio, .luan, .squares, .square1, .square2, .square3, .socialwall, .socialmedias, .sociainfo, .copyright');
+    const elementsToObserve = document.querySelectorAll('.bio, .luan, .squares, .square1, .square2, .square3, .socialwall, .socialmedias, .sociainfo, .copyright, .store, .productstore');
     elementsToObserve.forEach(el => observer.observe(el));
 
-    const storeObserver = new IntersectionObserver((entries, observer) => {
+    const storeObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('appear');
-
-                if (window.innerWidth < 600) {
-                    observer.unobserve(entry.target);
-                }
             }
         });
     }, { threshold: 0.1 });
@@ -63,25 +59,92 @@ document.addEventListener("DOMContentLoaded", function () {
         socialObserver.observe(socialSection);
     }
 
+    let questions;
+    let currentIndex = 0;
+    const bio1 = document.querySelector(".bio1");
+    const bio2 = document.querySelector(".bio2.invisible");
+    const bio3 = document.querySelector(".bio3.invisible");
+    let home = document.querySelector('.links a[href="#home"]');
+    let about = document.querySelector('.links a[href="#about"]');
+    let store = document.querySelector('.links a[href="#store"]');
+    let biodescription = document.querySelector('.biodescription');
+    let socialh3 = document.querySelector('.social h3');
+    let biobtn1 = document.querySelector('.biobtn1 h3');
+    let saibammais = document.querySelector('.saibamais');
+    let selectedLanguage = document.querySelector('.selected-language');
+    const language1 = document.querySelector('.language1');
+    const language2 = document.querySelector('.language2');
 
-    const bio = document.querySelector(".bio");
+    language1.addEventListener('click', () => {
+        localStorage.setItem('language', 'pt');
+        updatelanguage();
+    });
+
+    language2.addEventListener('click', () => {
+        localStorage.setItem('language', 'en');
+        updatelanguage();
+    });
+
+    function updatelanguage() {
+        if(localStorage.getItem('language') == 'pt') {
+            questions = [
+                "Quando e por que você começou a treinar para lutar? Virei profissional em 2012. Sou um dos melhores do mundo e quero provar isso, mas para isso preciso estar 100% em forma.",
+                "Quais graduações e títulos você já conquistou? Melhor do Brasil, Campeão do Shooto Brasil, faixa-preta de BJJ.",
+                "Você tem algum herói? Meu pai, minha mãe e meu mestre Dedé Pederneiras.",
+                "O que significa para você lutar no UFC? O UFC é o maior evento de MMA do mundo; é onde estão os melhores lutadores do planeta, onde todo lutador sonha estar. É um sonho que se torna realidade. E aqui no UFC, ser campeão significa que você é o melhor do mundo. Você se torna um campeão mundial de MMA.",
+                "Você fez faculdade e, se sim, qual foi o seu diploma? Estudei administração por um ano e meio.",
+                "Qual era seu trabalho antes de começar a lutar? Nunca trabalhei. Sempre me dediquei à luta.",
+                "Técnica de grappling favorita: Arm lock",
+                "Técnica de ataque favorita: Socos"
+            ];
+            home.textContent = 'Início';
+            about.textContent = 'Sobre';
+            store.textContent = 'Loja';
+            selectedLanguage.textContent = '🇧🇷 PT';
+            biodescription.textContent = "Nascido em Macapá. Tornou-se pro em 2012. Agora chegado no UFC ele busca provar que é um dos melhores do mundo do MMA peso galo max.61kg.";
+            socialh3.textContent = "Obrigado por chegar até aqui. Siga-me nas redes sociais ou me mande um email."
+            biobtn1.textContent = "Descrição";
+            saibammais.textContent = "Saiba Mais";
+        } 
+        
+        if (localStorage.getItem('language') == 'en') {
+           questions = [
+            "When and why did you start training to fight? Turned pro in 2012. I am one of the best in the world and I want to prove it, but for that, I need to be 100% in shape.",
+            "What degrees and titles have you won? Best in Brazil, Shooto Brazil Champion, BJJ black belt.",
+            "Do you have any heroes? My father, my mother, and my master Dedé Pederneiras.",
+            "What does it mean for you to fight in the UFC? The UFC is the biggest MMA event in the world; it’s where the best fighters on the planet are, where every fighter dreams of being. It’s a dream come true. And here in the UFC, being a champion means you are the best in the world. You become an MMA world champion.",
+            "Did you go to college, and if so, what was your degree? I studied business administration for a year and a half.",
+            "What was your job before you started fighting? I never worked. I’ve always dedicated myself to fighting.",
+            "Favorite grappling technique: Arm lock",
+            "Favorite striking technique: Punches"
+        ];
+           home.textContent = 'Home';
+           about.textContent = 'About';
+           store.textContent = 'Store';
+           selectedLanguage.textContent = '🇺🇸 EN';
+           biodescription.textContent = "Born in Macapá. He turned pro in 2012. Now he's on the UFC, looking to prove that he's one of the best in the world in MMA at bantamweight max (61kg).";
+           socialh3.textContent = "Thanks for reading this far. Follow me on social media or send me an email."
+           biobtn1.textContent = "Description";
+           saibammais.textContent = "Learn More";
+        }
+
+        if (!bio3.classList.contains("invisible")) {
+            document.querySelector(".QandA").textContent = questions[currentIndex];
+        }
+    }
+
+    updatelanguage();
 
     document.querySelector(".biobtn1").addEventListener('click', () => {
-        bio.innerHTML = `
-            <h3 class="bioname">Luan Lacerda</h3>
-            <p class="biodescription">"Nascido em Macapá. Tornou-se pro em 2012. Agora chegado no UFC ele busca provar que é um dos melhores do mundo no MMA peso galo."</p>
-            <div><a href="#store"><img class="arrow" src="images/down.png" alt=""></a></div>
-        `;
+        bio1.classList.remove('invisible');
+        bio2.classList.add('invisible');
+        bio3.classList.add('invisible');
     });
 
     document.querySelector(".biobtn2").addEventListener('click', () => {
-        bio.innerHTML = `
-            <h3 class="highlightname">Luan Lacerda - MMA Highlights</h3>
-            <div class="highlightdiv">
-                <video class="highlight" src="videos/highlights.mp4" poster="images/logo.png" controls autoplay loop></video>
-            </div>
-            <div><a href="#store"><img class="arrow" src="images/down.png" alt=""></a></div>
-        `;
+        bio2.classList.remove('invisible');
+        bio1.classList.add('invisible');
+        bio3.classList.add('invisible');
 
         setTimeout(() => {
             const video = document.querySelector(".highlight");
@@ -97,47 +160,35 @@ document.addEventListener("DOMContentLoaded", function () {
         }, 100);
     });
 
-    document.querySelector(".biobtn3").addEventListener('click', () => {
-        const questions = [
-            "Quando e por que você começou a treinar para lutar? Virei profissional em 2012. Sou um dos melhores do mundo e quero provar isso, mas para isso preciso estar 100% em forma.",
-            "Quais graduações e títulos você já conquistou? Melhor do Brasil, Campeão do Shooto Brasil, faixa-preta de BJJ.",
-            "Você tem algum herói? Meu pai, minha mãe e meu mestre Dedé Pederneiras.",
-            "O que significa para você lutar no UFC? O UFC é o maior evento de MMA do mundo; é onde estão os melhores lutadores do planeta, onde todo lutador sonha estar. É um sonho que se torna realidade. E aqui no UFC, ser campeão significa que você é o melhor do mundo. Você se torna um campeão mundial de MMA.",
-            "Você fez faculdade e, se sim, qual foi o seu diploma? Estudei administração por um ano e meio.",
-            "Qual era seu trabalho antes de começar a lutar? Nunca trabalhei. Sempre me dediquei à luta.",
-            "Técnica de grappling favorita: Arm lock",
-            "Técnica de ataque favorita: Socos"
-        ];
-
-        let currentIndex = 0;
-
+    document.querySelector(".biobtn3").addEventListener("click", () => {
+        const QandA = document.querySelector(".QandA");
+        const prev = document.getElementById("prev");
+        const next = document.getElementById("next");
+    
+        bio3.classList.remove("invisible");
+        bio1.classList.add("invisible");
+        bio2.classList.add("invisible");
+    
         function displayQuestion(index) {
-            bio.innerHTML = `
-                <div class="QandAdiv">
-                    <p class="QandA">${questions[index]}</p>
-                </div>
-                <div>
-                    <button id="prev" ${index === 0 ? "disabled" : ""}><i class="fa-solid fa-arrow-left"></i></button>
-                    <button id="next" ${index === questions.length - 1 ? "disabled" : ""}><i class="fa-solid fa-arrow-right"></i></button>
-                </div>
-                <div><a href="#store"><img class="arrow" src="images/down.png" alt=""></a></div>
-            `;
-
-            document.querySelector("#next").addEventListener("click", () => {
-                if (currentIndex < questions.length - 1) {
-                    currentIndex++;
-                    displayQuestion(currentIndex);
-                }
-            });
-
-            document.querySelector("#prev").addEventListener("click", () => {
-                if (currentIndex > 0) {
-                    currentIndex--;
-                    displayQuestion(currentIndex);
-                }
-            });
+            QandA.textContent = questions[index];
+            prev.disabled = index === 0;
+            next.disabled = index === questions.length - 1;
         }
-
+    
+        prev.addEventListener("click", () => {
+            if (currentIndex > 0) {
+                currentIndex--;
+                displayQuestion(currentIndex);
+            }
+        });
+    
+        next.addEventListener("click", () => {
+            if (currentIndex < questions.length - 1) {
+                currentIndex++;
+                displayQuestion(currentIndex);
+            }
+        });
+    
         displayQuestion(currentIndex);
     });
 });
@@ -162,3 +213,8 @@ document.addEventListener("DOMContentLoaded", function () {
     products.addEventListener("scroll", hideHeaderOnScroll);
 
 });
+
+function toggleDropdown() {
+    document.querySelector('.custom-select').classList.toggle('open');
+}
+

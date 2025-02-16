@@ -79,6 +79,73 @@ body {
     pointer-events: none;
 }
 
+.custom-select {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.selected-language {
+    background-color: #2C2C2C;
+    color: #F9F9F9;
+    font-family: "Space Mono", serif;
+    font-size: 14px;
+    padding: 8px 12px;
+    border: 2px solid #F4B400;
+    border-radius: 0px;
+    cursor: pointer;
+    outline: none;
+    transition: 0.3s ease-in-out;
+    width: 95px;
+    text-align: left;
+}
+
+.selected-language:hover, .selected-language:focus {
+    background-color: #3A3A3A;
+}
+
+.language-options {
+    display: none;
+    position: absolute;
+    background-color: #2C2C2C;
+    border: 2px solid #F4B400;
+    top: 100%;
+    left: 0;
+    right: 0;
+    border-radius: 0px;
+    z-index: 1;
+    transition: ease 0.5s;
+}
+
+.language-options button {
+    background-color: #2C2C2C;
+    color: #F9F9F9;
+    font-family: "Space Mono", serif;
+    font-size: 14px;
+    padding: 8px 12px;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+    text-align: left;
+    transition: 0.3s ease;
+}
+
+.language-options button:hover {
+    background-color: #3A3A3A;
+}
+
+.custom-select.open .language-options {
+    display: block;
+}
+
+.custom-select::after {
+    content: "▼";
+    position: absolute;
+    right: 10px;
+    pointer-events: none;
+    color: #F4B400;
+}
+
 .logo {
     width: 100px;
 }
@@ -141,6 +208,16 @@ body {
     flex-direction: column;
 }
 
+.bio1, .bio2, .bio3 {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.bio1.invisible, .bio2.invisible, .bio3.invisible {
+    display: none !important;
+}
+
 .QandAdiv {
     height: 200px;
     display: flex;
@@ -181,7 +258,7 @@ body {
     font-size: 30px;
 }
 
-.biodescription {
+.biodescription, .biodescription2 {
     font-family: "Space Mono", serif;
 }
 

@@ -53,10 +53,6 @@
         gap: 20px;
     }
 
-    .QandAdiv {
-        overflow: hidden;
-    }
-
     .bio {
         width: 400px;
         height: max-content;
@@ -92,6 +88,10 @@
     .header {
         flex-direction: column;
         width: 300px;
+    }
+
+    .custom-select {
+        margin-top: 20px;
     }
 
     .squares {
@@ -176,7 +176,7 @@
         font-size: 15px;
     }
 
-    .biodescription {
+    .biodescription, .biodescription2 {
         width: 200px;
     }
 
