@@ -139,6 +139,12 @@ document.addEventListener("DOMContentLoaded", function () {
         bio1.classList.remove('invisible');
         bio2.classList.add('invisible');
         bio3.classList.add('invisible');
+
+        const video = document.querySelector(".highlight");
+        if (video) {
+            video.pause();
+            video.currentTime = 0; 
+        }
     });
 
     document.querySelector(".biobtn2").addEventListener('click', () => {
@@ -149,6 +155,7 @@ document.addEventListener("DOMContentLoaded", function () {
         setTimeout(() => {
             const video = document.querySelector(".highlight");
             if (video) {
+                video.play();
                 document.addEventListener("fullscreenchange", () => {
                     if (document.fullscreenElement === video) {
                         video.classList.add("fullscreen");
@@ -168,6 +175,12 @@ document.addEventListener("DOMContentLoaded", function () {
         bio3.classList.remove("invisible");
         bio1.classList.add("invisible");
         bio2.classList.add("invisible");
+
+        const video = document.querySelector(".highlight");
+        if (video) {
+            video.pause();
+            video.currentTime = 0; 
+        }
     
         function displayQuestion(index) {
             QandA.textContent = questions[index];
